@@ -1,9 +1,8 @@
-#-----------------------------------------
-#---±¾³ÌĞòÖ÷Òª¹¦ÄÜÎªÊ¶±ğurl¸ñÊ½--------
-#------×Öµä¸ñÊ½½ÏÉÙ£¬»¶Ó­²¹³ä----------
-#---------»¶Ó­Ö¸ÕıºÍ½»Á÷----------------
-#-----------Author£ºVi-------------------
-#-----------------------------------------
+"""
+@function:Distinguish the format of the URL
+@Author: Vi
+@email: 3320163319@qq.com
+"""
 
 import requests
 import  urllib2
@@ -116,7 +115,7 @@ def FileType(path):
     tl = TypeList()
     ftype = 'unknown'
     for hcode in tl.keys():
-        numbytes = len(hcode) / 2 #ĞèÒª¶ÁµÄ×Ö½ÚÊı
+        numbytes = len(hcode) / 2 #éœ€è¦è¯»çš„å­—èŠ‚æ•°
         myfile.seek(0)
         hbytes = struct.unpack_from("B" * numbytes, myfile.read(numbytes))
         f_hcode = Bytes2hex(hbytes)
@@ -135,7 +134,7 @@ def main():
             break
         for line in lines:
             url = line.strip('\n')
-            #url = raw_input("ÇëÊäÈëÁ´½ÓµØÖ·£º") 
+            #url = raw_input("è¯·è¾“å…¥é“¾æ¥åœ°å€ï¼š") 
             #filename = url[url.rindex("/")+1:url.rindex(".")]
             if "." in url:
                 b = url[-1]
@@ -157,16 +156,16 @@ def main():
             try:
                 f.write("URL:"+url+", SUFFIX:"+suffix+", FORMAT:"+FileType(path))
                 f.write("\n")
-                print "URL: %s , SUFFIX : %s , ¸ñÊ½£º%s"  % (url , suffix , FileType(path))
+                print "URL: %s , SUFFIX : %s , æ ¼å¼ï¼š%s"  % (url , suffix , FileType(path))
             except:
                 print "Can't read the type of %s"%url
-        print "ÒÑ½«url¸ñÊ½ĞÅÏ¢Ğ´ÈëFormatInfo.txt"
+        print "å·²å°†urlæ ¼å¼ä¿¡æ¯å†™å…¥FormatInfo.txt"
     os.remove(path)
     file.close()
     f.close() 
     
 if __name__ == '__main__': 
-    print "ÕıÔÚÊ¶±ğ,ÇëÉÔµÈ..."
+    print "æ­£åœ¨è¯†åˆ«,è¯·ç¨ç­‰..."
     main()
        
 sys.exit()
